@@ -7,7 +7,43 @@ load_dotenv()
 NUM_RUNS_TIMES = 5
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You are a precise string reversal engine.
+Given ANY input string, output ONLY the exact characters in strict reverse order.
+- Treat the entire input as one continuous string, even if it looks like multiple words or protocols.
+- Do NOT split by meaning, dictionary words, or known prefixes/suffixes (e.g., http, status, file extensions, domain parts).
+- Preserve all characters and casing; do not insert or remove spaces or punctuation.
+- Output must be a single sequence of characters with nothing else.
+
+Examples (follow EXACTLY):
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+cat
+A: tac
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+http
+A: ptth
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+status
+A: sutats
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+protocol
+A: locotorp
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+internet
+A: tenretni
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+apple
+A: elppa
+
+Q: Reverse the order of letters in the following word. Only output the reversed word, no other text:
+httpstatus
+A: sutatsptth
+"""
 
 USER_PROMPT = """
 Reverse the order of letters in the following word. Only output the reversed word, no other text:

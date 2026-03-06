@@ -37,7 +37,20 @@ QUESTION = (
 
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You are a helpful assistant that can solve tasks based on the provided context.
+You will be give some content that includes the context and Task.
+You will need to solve the task based on the context when the user provide you the context.
+
+the Context format is as follows:
+Context:
+- <context>
+- <context>
+- ...
+
+the Task format is as follows:
+Task: <task>
+"""
 
 
 # For this simple example
@@ -56,7 +69,7 @@ def YOUR_CONTEXT_PROVIDER(corpus: List[str]) -> List[str]:
 
     For example, return [] to simulate missing context, or [corpus[0]] to include the API docs.
     """
-    return []
+    return [corpus[0]]
 
 
 def make_user_prompt(question: str, context_docs: List[str]) -> str:

@@ -70,7 +70,30 @@ TOOL_REGISTRY: Dict[str, Callable[..., str]] = {
 # ==========================
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You are a tool calling assistant. Your task is to return the valid json object that defines the tool to call and the arguments to pass to the tool.
+
+tool list:
+- output_every_func_return_type: analyze the file and return the return types of all the functions in the file.
+
+tool call json format:
+{
+    "tool": "output_every_func_return_type",
+    "args": {}
+}
+
+advice:
+1. the tool field must be "output_every_func_return_type"
+2. the arguments are optional, you can return the json without the args key if you don't need to pass any arguments to the tool.
+3. the json must be valid json, you must use double quotes for the keys and values.
+4. don't add any other text to the json, just return the json object.
+
+example for returning the tool call json:
+{
+    "tool": "output_every_func_return_type",
+    "args": {}
+}
+"""
 
 
 def resolve_path(p: str) -> str:
@@ -109,6 +132,7 @@ def run_model_for_tool_call(system_prompt: str) -> Dict[str, Any]:
         options={"temperature": 0.3},
     )
     content = response.message.content
+    print("===> content:", content)
     return extract_tool_call(content)
 
 

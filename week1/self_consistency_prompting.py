@@ -9,7 +9,24 @@ load_dotenv()
 NUM_RUNS_TIMES = 5
 
 # TODO: Fill this in! Try to get as close to 100% correctness across all runs as possible.
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You are a helpful assistant that can solve math problems.
+You will be given a math problem and you need to solve it.
+You should think step by step and output the final answer.
+You should listing out each step of the calculation process is essential for accuracy.
+
+example:
+Q: Solve this problem, then give the final answer on the last line as "Answer: <number>".
+
+Henry made two stops during his 60-mile bike trip. He first stopped after 20
+miles. His second stop was 15 miles before the end of the trip. How many miles
+did he travel between his first and second stops?
+
+A: 1. Henry made two stops during his 60-mile bike trip. He first stopped after 20 miles, so he traveled 20 miles.
+2. His second stop was 15 miles before the end of the trip, so he traveled 60 - 15 = 45 miles.
+3. The total distance he traveled between his first and second stops is 45 - 20 = 25 miles.
+4. Therefore, the answer is 25.
+"""
 
 USER_PROMPT = """
 Solve this problem, then give the final answer on the last line as "Answer: <number>".
